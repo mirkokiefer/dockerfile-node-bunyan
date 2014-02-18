@@ -1,2 +1,2 @@
 
-docker build -t mirkokiefer/node+bunyan .
+docker build -t mirkokiefer/node-bunyan .
