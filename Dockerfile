@@ -1,10 +1,12 @@
 
 FROM mirkokiefer/node
 
-RUN apt-get install -y python
+RUN echo deb http://archive.ubuntu.com/ubuntu precise main universe > /etc/apt/sources.list
+RUN echo deb http://archive.ubuntu.com/ubuntu precise-updates main universe >> /etc/apt/sources.list
+RUN apt-get update
 
-RUN mkdir /app
+RUN apt-get install -y build-essential python
 
-RUN cd /app && npm install -g bunyan
+RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-CMD ["node"]
+RUN npm install -g bunyan
